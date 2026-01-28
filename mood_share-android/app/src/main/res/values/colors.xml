@@ -1,0 +1,41 @@
+<resources>
+    <!-- Modern Vibrant Colors -->
+    <color name="md_theme_primary">#FF6B9D</color>
+    <color name="md_theme_onPrimary">#FFFFFF</color>
+    <color name="md_theme_secondary">#FFC947</color>
+    <color name="md_theme_tertiary">#A78BFA</color>
+    <color name="md_theme_background">#FFFFFF</color>
+    <color name="md_theme_onBackground">#121212</color>
+
+    <!-- Light Theme Colors - Soft Pastels -->
+    <color name="moodshare_light_background">#FFF5F8</color>
+    <color name="moodshare_light_surface">#FFFFFF</color>
+    <color name="moodshare_light_card">#FFFFFF</color>
+    <color name="moodshare_light_text">#2D3748</color>
+    <color name="moodshare_light_accent">#FF6B9D</color>
+    <color name="moodshare_light_accent2">#A78BFA</color>
+
+    <!-- Dark Theme Colors - Deep but Colorful -->
+    <color name="moodshare_dark_background">#1A1625</color>
+    <color name="moodshare_dark_surface">#2D2438</color>
+    <color name="moodshare_dark_card">#3D3350</color>
+    <color name="moodshare_dark_text">#F7FAFC</color>
+    <color name="moodshare_dark_onBackground">#E2E8F0</color>
+    <color name="moodshare_dark_accent">#FF8FB3</color>
+    <color name="moodshare_dark_accent2">#C4B5FD</color>
+
+    <!-- Gradient Colors -->
+    <color name="gradient_pink_start">#FF6B9D</color>
+    <color name="gradient_pink_end">#FFA8CC</color>
+    <color name="gradient_purple_start">#A78BFA</color>
+    <color name="gradient_purple_end">#C4B5FD</color>
+    <color name="gradient_yellow">#FFC947</color>
+
+    <!-- Mood Bubble Colors -->
+    <color name="mood_bubble_bg">#FFF3E0</color>
+    <color name="mood_bubble_border">#FF8F00</color>
+    <color name="mood_bubble_text">#E65100</color>
+    <color name="mood_bubble_dark_bg">#4A3800</color>
+    <color name="mood_bubble_dark_border">#FFB74D</color>
+    <color name="mood_bubble_dark_text">#FFE0B2</color>
+</resources>

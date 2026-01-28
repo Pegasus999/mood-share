@@ -1,0 +1,30 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Mood Share: share moods with friends -->
+    <style name="Theme.MoodShare" parent="Theme.MoodShare.Light">
+        <item name="android:label">@string/app_name</item>
+    </style>
+
+    <style name="Theme.MoodShare.Light" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/md_theme_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_onPrimary</item>
+        <item name="colorSecondary">@color/md_theme_secondary</item>
+        <item name="colorTertiary">@color/md_theme_tertiary</item>
+        <item name="android:statusBarColor">@color/moodshare_light_background</item>
+        <item name="android:windowBackground">@color/moodshare_light_background</item>
+        <item name="android:textColor">@color/moodshare_light_text</item>
+        <item name="colorSurface">@color/moodshare_light_surface</item>
+        <item name="colorOnSurface">@color/moodshare_light_text</item>
+    </style>
+
+    <style name="Theme.MoodShare.Dark" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/moodshare_dark_accent</item>
+        <item name="colorOnPrimary">@color/md_theme_onPrimary</item>
+        <item name="colorSecondary">@color/md_theme_secondary</item>
+        <item name="colorTertiary">@color/moodshare_dark_accent2</item>
+        <item name="android:statusBarColor">@color/moodshare_dark_background</item>
+        <item name="android:windowBackground">@color/moodshare_dark_background</item>
+        <item name="android:textColor">@color/moodshare_dark_text</item>
+        <item name="colorSurface">@color/moodshare_dark_surface</item>
+        <item name="colorOnSurface">@color/moodshare_dark_text</item>
+    </style>
+</resources>

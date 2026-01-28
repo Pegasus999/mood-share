@@ -1,0 +1,12 @@
+<resources>
+    <!-- Dark Theme Overrides -->
+    <color name="md_theme_primary">#FF8FB3</color>
+    <color name="md_theme_onPrimary">#1A1625</color>
+    <color name="md_theme_secondary">#FFD666</color>
+    <color name="md_theme_tertiary">#C4B5FD</color>
+    <color name="md_theme_background">#1A1625</color>
+    <color name="md_theme_onBackground">#F7FAFC</color>
+
+    <!-- Mood Bubble Dark Mode Text -->
+    <color name="mood_bubble_text">#FFE0B2</color>
+</resources>

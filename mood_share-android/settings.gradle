@@ -1,0 +1,2 @@
+rootProject.name = "mood_share-android"
+include(":app")

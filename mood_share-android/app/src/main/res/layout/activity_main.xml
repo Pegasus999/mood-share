@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/root_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:background="@color/moodshare_light_background">
+
+        <TextView
+            android:id="@+id/text_tagline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_tagline"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
+            android:textSize="16sp"
+            android:layout_marginBottom="24dp"
+            android:alpha="0.7" />
+
+        <LinearLayout
+            android:id="@+id/register_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/who_is_me_heading"
+                android:textAppearance="?attr/textAppearanceHeadlineMedium"
+                android:textStyle="bold"
+                android:textSize="26sp"
+                android:textColor="@color/md_theme_primary"
+                android:layout_marginBottom="12dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxStrokeWidth="2dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter your name"
+                    android:inputType="textPersonName"
+                    android:textSize="18sp"
+                    android:padding="16dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_register"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="12dp"
+                android:text="Register"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:cornerRadius="16dp"
+                app:icon="@android:drawable/ic_input_add"
+                app:iconGravity="textStart"
+                style="@style/Widget.Material3.Button.ElevatedButton" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/text_status_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/status_heading"
+            android:textAppearance="?attr/textAppearanceHeadlineMedium"
+            android:textStyle="bold"
+            android:textSize="26sp"
+            android:textColor="@color/md_theme_tertiary" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/profile_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="8dp"
+            app:contentPadding="32dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <!-- Avatar Container with border -->
+                <FrameLayout
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:layout_marginBottom="20dp">
+
+                    <!-- Circular border background -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_avatar_border" />
+
+                    <!-- Avatar image -->
+                    <ImageView
+                        android:id="@+id/image_avatar"
+                        android:layout_width="172dp"
+                        android:layout_height="172dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="Avatar"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_avatar_placeholder"
+                        android:background="@android:color/transparent"
+                        android:clipToOutline="true" />
+
+                    <!-- Mood Bubble -->
+                    <TextView
+                        android:id="@+id/text_mood_bubble"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|end"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/bg_thought_bubble"
+                        android:text="@string/widget_placeholder_mood"
+                        android:textColor="@color/mood_bubble_text"
+                        android:textAppearance="?attr/textAppearanceBodyMedium"
+                        android:textStyle="bold"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:elevation="4dp" />
+                </FrameLayout>
+
+                <!-- Profile Info -->
+                <TextView
+                    android:id="@+id/text_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:textAppearance="?attr/textAppearanceHeadlineMedium"
+                    android:textStyle="bold"
+                    android:textSize="28sp"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/text_mood"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mood"
+                    android:textAppearance="?attr/textAppearanceBodyLarge"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="24dp"
+                    android:textAlignment="center"
+                    android:gravity="center" />
+
+                <!-- Focus Switch - Bigger and centered -->
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switch_focus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textOn="@string/switch_focused_label"
+                    android:textOff="@string/switch_chilling_label"
+                    android:showText="true"
+                    android:textSize="18sp"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/status_switch_description" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Partner Section -->
+        <TextView
+            android:id="@+id/text_partner_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/partner_heading"
+            android:textAppearance="?attr/textAppearanceHeadlineMedium"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:textColor="@color/md_theme_secondary"
+            android:visibility="gone" />
+
+        <!-- Select Partner Button (shown when no partner) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_select_partner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/select_partner"
+            android:textSize="16sp"
+            app:cornerRadius="16dp"
+            app:icon="@android:drawable/ic_menu_search"
+            app:iconGravity="textStart"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:visibility="gone" />
+
+        <!-- Partner Profile Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/partner_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp"
+            app:contentPadding="20dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- Partner Avatar -->
+                <FrameLayout
+                    android:layout_width="80dp"
+                    android:layout_height="80dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_avatar_border" />
+
+                    <ImageView
+                        android:id="@+id/image_partner_avatar"
+                        android:layout_width="76dp"
+                        android:layout_height="76dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="Partner Avatar"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_avatar_placeholder"
+                        android:background="@android:color/transparent"
+                        android:clipToOutline="true" />
+
+                    <!-- Partner Mood Bubble -->
+                    <TextView
+                        android:id="@+id/text_partner_mood_bubble"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|end"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="@drawable/bg_thought_bubble"
+                        android:text="@string/widget_placeholder_mood"
+                        android:textColor="@color/mood_bubble_text"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:elevation="2dp" />
+                </FrameLayout>
+
+                <!-- Partner Info -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="16dp">
+
+                    <TextView
+                        android:id="@+id/text_partner_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Partner Name"
+                        android:textAppearance="?attr/textAppearanceHeadlineSmall"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/text_partner_mood"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Partner Mood"
+                        android:textAppearance="?attr/textAppearanceBodyMedium"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:id="@+id/text_partner_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/switch_chilling_label"
+                        android:textAppearance="?attr/textAppearanceBodySmall"
+                        android:textStyle="bold"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- Remove Partner Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_remove_partner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="✕"
+                    android:textSize="18sp"
+                    android:minWidth="40dp"
+                    android:minHeight="40dp"
+                    app:cornerRadius="20dp"
+                    style="@style/Widget.Material3.Button.TextButton" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</ScrollView>

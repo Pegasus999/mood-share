@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_gradient_card"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/widget_avatar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="12dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/bg_avatar_border"
+            android:src="@drawable/ic_avatar_placeholder" />
+
+        <TextView
+            android:id="@+id/widget_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your name"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/md_theme_primary"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/widget_mood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mood"
+            android:textSize="14sp"
+            android:textAlignment="center" />
+    </LinearLayout>
+</FrameLayout>

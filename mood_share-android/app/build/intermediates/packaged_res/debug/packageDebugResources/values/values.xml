@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="gradient_pink_end">#FFA8CC</color>
+    <color name="gradient_pink_start">#FF6B9D</color>
+    <color name="gradient_purple_end">#C4B5FD</color>
+    <color name="gradient_purple_start">#A78BFA</color>
+    <color name="gradient_yellow">#FFC947</color>
+    <color name="md_theme_background">#FFFFFF</color>
+    <color name="md_theme_onBackground">#121212</color>
+    <color name="md_theme_onPrimary">#FFFFFF</color>
+    <color name="md_theme_primary">#FF6B9D</color>
+    <color name="md_theme_secondary">#FFC947</color>
+    <color name="md_theme_tertiary">#A78BFA</color>
+    <color name="mood_bubble_bg">#FFF3E0</color>
+    <color name="mood_bubble_border">#FF8F00</color>
+    <color name="mood_bubble_dark_bg">#4A3800</color>
+    <color name="mood_bubble_dark_border">#FFB74D</color>
+    <color name="mood_bubble_dark_text">#FFE0B2</color>
+    <color name="mood_bubble_text">#E65100</color>
+    <color name="moodshare_dark_accent">#FF8FB3</color>
+    <color name="moodshare_dark_accent2">#C4B5FD</color>
+    <color name="moodshare_dark_background">#1A1625</color>
+    <color name="moodshare_dark_card">#3D3350</color>
+    <color name="moodshare_dark_onBackground">#E2E8F0</color>
+    <color name="moodshare_dark_surface">#2D2438</color>
+    <color name="moodshare_dark_text">#F7FAFC</color>
+    <color name="moodshare_light_accent">#FF6B9D</color>
+    <color name="moodshare_light_accent2">#A78BFA</color>
+    <color name="moodshare_light_background">#FFF5F8</color>
+    <color name="moodshare_light_card">#FFFFFF</color>
+    <color name="moodshare_light_surface">#FFFFFF</color>
+    <color name="moodshare_light_text">#2D3748</color>
+    <string name="app_name">Mood Share</string>
+    <string name="app_tagline">✨ Share your vibes with friends ✨</string>
+    <string name="mood_dialog_empty">Please share your mood!</string>
+    <string name="mood_dialog_hint">What\'s on your mind?</string>
+    <string name="mood_dialog_title">✨ Update your mood</string>
+    <string name="no_results">No users found</string>
+    <string name="partner_heading">💞 Partner</string>
+    <string name="partner_removed">Partner disconnected</string>
+    <string name="partner_set_success">Partner connected! 💕</string>
+    <string name="register_button_label">Search</string>
+    <string name="register_error_empty">Please enter your name!</string>
+    <string name="register_saved_hint">Welcome back, %1$s! Your profile is active ✨</string>
+    <string name="register_success">Welcome, %1$s! 🎉</string>
+    <string name="search_partner_hint">Search by name...</string>
+    <string name="search_partner_title">🔍 Find your partner</string>
+    <string name="select_partner">Select Partner</string>
+    <string name="status_heading">💫 My Status</string>
+    <string name="status_switch_description">Toggle between focused and chilling mode</string>
+    <string name="switch_chilling_label">😌 CHILLING</string>
+    <string name="switch_focused_label">🔥 FOCUSED</string>
+    <string name="update_failure">Oops! Unable to update status</string>
+    <string name="update_success">Status updated! ✨</string>
+    <string name="who_is_me_heading">👋 Who am I?</string>
+    <string name="widget_placeholder_mood">😊</string>
+    <string name="widget_placeholder_name">No profile yet</string>
+    <string name="widget_preview_label">Widget preview</string>
+    <style name="Theme.MoodShare" parent="Theme.MoodShare.Light">
+        <item name="android:label">@string/app_name</item>
+    </style>
+    <style name="Theme.MoodShare.Dark" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/moodshare_dark_accent</item>
+        <item name="colorOnPrimary">@color/md_theme_onPrimary</item>
+        <item name="colorSecondary">@color/md_theme_secondary</item>
+        <item name="colorTertiary">@color/moodshare_dark_accent2</item>
+        <item name="android:statusBarColor">@color/moodshare_dark_background</item>
+        <item name="android:windowBackground">@color/moodshare_dark_background</item>
+        <item name="android:textColor">@color/moodshare_dark_text</item>
+        <item name="colorSurface">@color/moodshare_dark_surface</item>
+        <item name="colorOnSurface">@color/moodshare_dark_text</item>
+    </style>
+    <style name="Theme.MoodShare.Light" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/md_theme_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_onPrimary</item>
+        <item name="colorSecondary">@color/md_theme_secondary</item>
+        <item name="colorTertiary">@color/md_theme_tertiary</item>
+        <item name="android:statusBarColor">@color/moodshare_light_background</item>
+        <item name="android:windowBackground">@color/moodshare_light_background</item>
+        <item name="android:textColor">@color/moodshare_light_text</item>
+        <item name="colorSurface">@color/moodshare_light_surface</item>
+        <item name="colorOnSurface">@color/moodshare_light_text</item>
+    </style>
+</resources>
