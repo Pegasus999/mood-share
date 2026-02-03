@@ -4,6 +4,7 @@ import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -135,6 +136,38 @@ class ApiClient(private val baseUrlProvider: suspend () -> String) {
                 throw ApiException(response.code, body)
             }
             parseProfile(body)
+        }
+    }
+
+    suspend fun uploadAvatar(
+        name: String,
+        fileName: String,
+        bytes: ByteArray,
+        mimeType: String
+    ): Profile = withContext(Dispatchers.IO) {
+        val baseUrl = baseUrlProvider().trimEnd('/')
+        val body = MultipartBody.Builder()
+            .setType(MultipartBody.FORM)
+            .addFormDataPart("name", name)
+            .addFormDataPart(
+                "file",
+                fileName,
+                bytes.toRequestBody(mimeType.toMediaType())
+            )
+            .build()
+
+        val request = Request.Builder()
+            .url("$baseUrl/upload")
+            .post(body)
+            .build()
+
+        client.newCall(request).execute().use { response ->
+            val responseBody = response.body?.string().orEmpty()
+            Log.d(TAG, "POST /upload -> ${response.code}")
+            if (!response.isSuccessful) {
+                throw ApiException(response.code, responseBody)
+            }
+            parseProfile(responseBody)
         }
     }
 

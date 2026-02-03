@@ -83,6 +83,21 @@ class MoodRepository(context: Context) {
         return profile
     }
 
+    suspend fun uploadAvatar(
+        fileName: String,
+        bytes: ByteArray,
+        mimeType: String
+    ): Profile? {
+        val name = settings.profileName.firstOrNull()
+        if (name.isNullOrBlank()) {
+            return null
+        }
+        val profile = api.uploadAvatar(name, fileName, bytes, mimeType)
+        settings.saveProfile(profile)
+        Log.d(TAG, "Uploaded avatar: $profile")
+        return profile
+    }
+
     companion object {
         private const val TAG = "MoodShareRepo"
     }

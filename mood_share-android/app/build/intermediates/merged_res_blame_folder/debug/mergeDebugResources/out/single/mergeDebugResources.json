@@ -4,20 +4,24 @@
         "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/mipmap-mdpi/ic_launcher.webp"
     },
     {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_bg_register_card.xml.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/bg_register_card.xml"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_ic_partner.xml.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/ic_partner.xml"
+    },
+    {
         "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/mipmap-mdpi_ic_launcher_round.webp.flat",
         "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/mipmap-mdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_ic_refresh.xml.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/ic_refresh.xml"
     },
     {
-        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_ic_launcher_background.xml.flat",
-        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/ic_launcher_background.xml"
-    },
-    {
-        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_bg_status_dot.xml.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/bg_status_dot.xml"
     },
     {
         "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/mipmap-xhdpi_ic_launcher_round.webp.flat",
@@ -28,20 +32,100 @@
         "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/bg_gradient_card.xml"
     },
     {
-        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/ic_launcher_foreground.xml"
-    },
-    {
         "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable-night_bg_gradient_card.xml.flat",
         "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable-night/bg_gradient_card.xml"
     },
     {
-        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_ic_avatar_placeholder.xml.flat",
-        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/ic_avatar_placeholder.xml"
-    },
-    {
         "merged": "com.moodshare.app-debug-35:/layout_activity_main.xml.flat",
         "source": "com.moodshare.app-main-37:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/mipmap-mdpi_ic_launcher_foreground.webp.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/mipmap-mdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_bg_battery_icon.xml.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/bg_battery_icon.xml"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/color_switch_track_tint.xml.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/color/switch_track_tint.xml"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_ic_sun.xml.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/ic_sun.xml"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/mipmap-xxhdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable-night_bg_thought_bubble.xml.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable-night/bg_thought_bubble.xml"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_bg_mood_bubble_active.xml.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/bg_mood_bubble_active.xml"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_bg_avatar_border.xml.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/bg_avatar_border.xml"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/mipmap-hdpi_ic_launcher_foreground.webp.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/mipmap-hdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_bg_home_indicator.xml.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/bg_home_indicator.xml"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/mipmap-xhdpi_ic_launcher_foreground.webp.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/mipmap-xhdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_bg_status_bar_icon.xml.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/bg_status_bar_icon.xml"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/color_switch_thumb_tint.xml.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/color/switch_thumb_tint.xml"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_bg_wifi_icon.xml.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/bg_wifi_icon.xml"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_ic_launcher_background.xml.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_ic_avatar_placeholder.xml.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/ic_avatar_placeholder.xml"
     },
     {
         "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
@@ -52,16 +136,20 @@
         "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/layout/activity_main.xml"
     },
     {
-        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable-night_bg_thought_bubble.xml.flat",
-        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable-night/bg_thought_bubble.xml"
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_ic_user.xml.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/ic_user.xml"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_bg_status_dot_warn.xml.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/bg_status_dot_warn.xml"
     },
     {
         "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
         "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
-        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_ic_moon.xml.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/ic_moon.xml"
     },
     {
         "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/mipmap-anydpi-v26_ic_launcher.xml.flat",
@@ -76,20 +164,32 @@
         "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/xml/profile_widget_info.xml"
     },
     {
-        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_bg_mood_bubble_inactive.xml.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/bg_mood_bubble_inactive.xml"
     },
     {
-        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_bg_avatar_border.xml.flat",
-        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/bg_avatar_border.xml"
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_ic_close.xml.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/ic_close.xml"
     },
     {
-        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_ic_status.xml.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/ic_status.xml"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_bg_photo_overlay.xml.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/bg_photo_overlay.xml"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/mipmap-xxxhdpi/ic_launcher_foreground.webp"
     },
     {
         "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_bg_thought_bubble.xml.flat",
         "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/bg_thought_bubble.xml"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_bg_toggle_container.xml.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/bg_toggle_container.xml"
     },
     {
         "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/layout_widget_profile.xml.flat",

@@ -7,4 +7,7 @@
     <color name="md_theme_secondary">#FFD666</color>
     <color name="md_theme_tertiary">#C4B5FD</color>
     <color name="mood_bubble_text">#FFE0B2</color>
+    <style name="Theme.MoodShare" parent="Theme.MoodShare.Dark">
+        <item name="android:label">@string/app_name</item>
+    </style>
 </resources>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="@color/glass_bubble_inactive_bg" />
+            <stroke android:width="1dp" android:color="@color/glass_bubble_inactive_stroke" />
+            <corners android:radius="999dp" />
+        </shape>
+    </item>
+
+    <item
+        android:bottom="-4dp"
+        android:right="18dp"
+        android:gravity="right|bottom">
+        <rotate
+            android:fromDegrees="45"
+            android:toDegrees="45"
+            android:pivotX="0%"
+            android:pivotY="0%">
+            <shape>
+                <size android:width="8dp" android:height="8dp" />
+                <solid android:color="@color/glass_bubble_inactive_bg" />
+            </shape>
+        </rotate>
+    </item>
+</layer-list>

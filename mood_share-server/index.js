@@ -2,10 +2,18 @@ const fastify = require('fastify')({ logger: true });
 const Database = require('better-sqlite3');
 const fs = require('node:fs');
 const path = require('node:path');
+const { pipeline } = require('node:stream/promises');
+
+const fastifyMultipart = require('@fastify/multipart');
+const fastifyStatic = require('@fastify/static');
 
 const dataDir = path.resolve(__dirname, 'data');
 if (!fs.existsSync(dataDir)) {
   fs.mkdirSync(dataDir, { recursive: true });
+}
+const uploadsDir = path.resolve(__dirname, 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir, { recursive: true });
 }
 const dbPath = path.join(dataDir, 'mood.db');
 const db = new Database(dbPath);
@@ -61,11 +69,107 @@ const toProfile = (row, includePartner = false) => {
 const makeAvatar = (name) =>
   `https://placehold.co/300?text=${encodeURIComponent(name)}`;
 
+const toSafeBase = (value) =>
+  value.replace(/[^a-z0-9_-]+/gi, '_').replace(/^_+|_+$/g, '') || 'avatar';
+
+const buildBaseUrl = (request) => {
+  const proto = request.headers['x-forwarded-proto'] || request.protocol || 'http';
+  const host = request.headers['x-forwarded-host'] || request.headers['host'] || request.hostname;
+  return `${proto}://${host}`;
+};
+
+fastify.register(fastifyMultipart, {
+  limits: { fileSize: 10 * 1024 * 1024 }
+});
+
+fastify.register(fastifyStatic, {
+  root: uploadsDir,
+  prefix: '/uploads/',
+  decorateReply: true
+});
+
 // Root route
 fastify.get('/', async () => ({ message: 'Welcome to Mood Share API' }));
 
 // Health check endpoint
 fastify.get('/health', async () => ({ status: 'ok', timestamp: new Date().toISOString() }));
+
+fastify.post('/upload', async (request, reply) => {
+  let name = (request.query?.name ?? '').toString().trim();
+
+  if (!request.isMultipart()) {
+    reply.code(400);
+    return { error: 'multipart form data is required' };
+  }
+
+  const filePart = await request.file();
+  if (!filePart) {
+    reply.code(400);
+    return { error: 'file is required' };
+  }
+
+  if (!name) {
+    const field = filePart.fields?.name;
+    const value = Array.isArray(field) ? field[0]?.value : field?.value;
+    name = (value ?? '').toString().trim();
+  }
+
+  if (!name) {
+    reply.code(400);
+    return { error: 'name is required' };
+  }
+
+  const existing = db.prepare('SELECT * FROM profiles WHERE name = ?').get(name);
+  if (!existing) {
+    reply.code(404);
+    return { error: `profile for "${name}" not found` };
+  }
+
+  const allowedTypes = new Map([
+    ['image/jpeg', '.jpg'],
+    ['image/png', '.png'],
+    ['image/webp', '.webp'],
+    ['image/gif', '.gif'],
+  ]);
+  const allowedExts = new Set(['.jpg', '.jpeg', '.png', '.webp', '.gif']);
+  let ext = allowedTypes.get(filePart.mimetype);
+  if (!ext) {
+    const candidate = path.extname(filePart.filename || '').toLowerCase();
+    if (allowedExts.has(candidate)) {
+      ext = candidate;
+    }
+  }
+  if (!ext) {
+    reply.code(415);
+    return { error: 'unsupported file type' };
+  }
+
+  const safeBase = toSafeBase(name);
+  const filename = `${safeBase}-${Date.now()}${ext}`;
+  const targetPath = path.join(uploadsDir, filename);
+  await pipeline(filePart.file, fs.createWriteStream(targetPath));
+
+  const baseUrl = buildBaseUrl(request);
+  const avatarUrl = `${baseUrl}/uploads/${encodeURIComponent(filename)}`;
+  db.prepare('UPDATE profiles SET avatar = ? WHERE name = ?').run(avatarUrl, name);
+
+  const updated = db.prepare('SELECT * FROM profiles WHERE name = ?').get(name);
+  return toProfile(updated, true);
+});
+
+fastify.get('/download/:filename', async (request, reply) => {
+  const filename = path.basename(request.params.filename || '');
+  if (!filename) {
+    reply.code(400);
+    return { error: 'filename is required' };
+  }
+  const filePath = path.join(uploadsDir, filename);
+  if (!fs.existsSync(filePath)) {
+    reply.code(404);
+    return { error: 'file not found' };
+  }
+  return reply.sendFile(filename);
+});
 
 fastify.post('/register', async (request, reply) => {
   const name = (request.body?.name ?? '').toString().trim();
