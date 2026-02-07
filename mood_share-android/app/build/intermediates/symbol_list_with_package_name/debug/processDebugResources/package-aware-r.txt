@@ -3621,14 +3621,11 @@ id text_input_start_icon
 id text_mood
 id text_mood_bubble
 id text_name
-id text_partner_heading
 id text_partner_mood
 id text_partner_mood_bubble
 id text_partner_name
 id text_partner_status
 id text_status_heading
-id text_tagline
-id text_time
 id textinput_counter
 id textinput_error
 id textinput_helper_text
@@ -3666,11 +3663,11 @@ id view_tree_view_model_store_owner
 id visible
 id visible_removing_fragment_view_tag
 id west
-id widget_avatar
 id widget_empty_state
-id widget_mood
-id widget_name
+id widget_partner_avatar
+id widget_partner_bubble
 id widget_partner_container
+id widget_partner_name
 id widget_refresh
 id widget_root
 id withText
@@ -4044,7 +4041,6 @@ string mtrl_switch_track_path
 string mtrl_timepicker_cancel
 string mtrl_timepicker_confirm
 string no_results
-string partner_heading
 string partner_image_description
 string partner_photo_download_message
 string partner_photo_download_title
@@ -5358,4 +5354,5 @@ styleable ViewPager2 android_orientation
 styleable ViewStubCompat android_id android_layout android_inflatedId
 styleable ViewTransition android_id SharedValue SharedValueId clearsTag duration ifTagNotSet ifTagSet motionInterpolator motionTarget onStateTransition pathMotionArc setsTag transitionDisable upDuration viewTransitionMode
 styleable include constraintSet
+xml file_paths
 xml profile_widget_info

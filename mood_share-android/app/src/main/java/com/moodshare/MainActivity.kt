@@ -2,7 +2,6 @@ package com.moodshare
 
 import android.app.DownloadManager
 import android.content.DialogInterface
-import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Environment
 import android.content.res.Configuration
@@ -18,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.FileProvider
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.switchmaterial.SwitchMaterial
@@ -25,7 +25,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.moodshare.core.MoodRepository
 import com.moodshare.core.Profile
 import com.squareup.picasso.Picasso
-import java.io.ByteArrayOutputStream
+import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -45,9 +45,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var statusSwitch: SwitchMaterial
     private lateinit var focusMoonIcon: ImageView
     private lateinit var focusSunIcon: ImageView
-    private lateinit var taglineText: TextView
     private lateinit var moodBubble: TextView
-    private lateinit var partnerHeading: TextView
     private lateinit var selectPartnerButton: MaterialButton
     private lateinit var partnerCard: View
     private lateinit var partnerAvatar: ImageView
@@ -57,7 +55,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var partnerMoodBubble: TextView
     private lateinit var removePartnerButton: MaterialButton
     private lateinit var pickPhotoLauncher: ActivityResultLauncher<String>
-    private lateinit var takePhotoLauncher: ActivityResultLauncher<Void?>
+    private lateinit var takePhotoLauncher: ActivityResultLauncher<Uri>
+    private var pendingCameraUri: Uri? = null
+    private var pendingCameraFile: File? = null
     private var suppressSwitchEvents = false
     private var currentProfile: Profile? = null
     private var hasProfile = false
@@ -76,7 +76,6 @@ class MainActivity : AppCompatActivity() {
         rootContainer = findViewById(R.id.root_container)
         loadingContainer = findViewById(R.id.loading_container)
         uploadContainer = findViewById(R.id.profile_avatar_progress)
-        taglineText = findViewById(R.id.text_tagline)
         registerSection = findViewById(R.id.register_section)
         nameInput = findViewById(R.id.edit_name)
         registerButton = findViewById(R.id.button_register)
@@ -88,7 +87,6 @@ class MainActivity : AppCompatActivity() {
         focusMoonIcon = findViewById(R.id.icon_focus_moon)
         focusSunIcon = findViewById(R.id.icon_focus_sun)
         moodBubble = findViewById(R.id.text_mood_bubble)
-        partnerHeading = findViewById(R.id.text_partner_heading)
         selectPartnerButton = findViewById(R.id.button_select_partner)
         partnerCard = findViewById(R.id.partner_card)
         partnerAvatar = findViewById(R.id.image_partner_avatar)
@@ -104,9 +102,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        takePhotoLauncher = registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { bitmap: Bitmap? ->
-            bitmap?.let {
-                lifecycleScope.launch { uploadAvatarFromBitmap(it) }
+        takePhotoLauncher = registerForActivityResult(ActivityResultContracts.TakePicture()) { saved: Boolean ->
+            if (saved) {
+                pendingCameraUri?.let { uri ->
+                    lifecycleScope.launch { uploadAvatarFromUri(uri) }
+                }
+            } else {
+                pendingCameraFile?.delete()
+                pendingCameraUri = null
+                pendingCameraFile = null
             }
         }
 
@@ -191,7 +195,6 @@ class MainActivity : AppCompatActivity() {
         if (isLoading) {
             registerSection.visibility = View.GONE
             profileCard.visibility = View.GONE
-            partnerHeading.visibility = View.GONE
             selectPartnerButton.visibility = View.GONE
             partnerCard.visibility = View.GONE
         }
@@ -211,7 +214,6 @@ class MainActivity : AppCompatActivity() {
         hasProfile = true
         registerSection.visibility = View.GONE
         nameInput.isEnabled = false
-        taglineText.visibility = View.GONE
         displayProfile(profile)
     }
 
@@ -242,7 +244,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun displayPartner(profile: Profile) {
-        partnerHeading.visibility = View.VISIBLE
         if (profile.partner != null) {
             selectPartnerButton.visibility = View.GONE
             partnerCard.visibility = View.VISIBLE
@@ -457,7 +458,7 @@ class MainActivity : AppCompatActivity() {
             .setTitle(R.string.change_photo_title)
             .setMessage(R.string.change_photo_message)
             .setPositiveButton(R.string.photo_source_camera) { _: DialogInterface, _: Int ->
-                takePhotoLauncher.launch(null)
+                launchFullResCameraCapture()
             }
             .setNegativeButton(R.string.photo_source_gallery) { _: DialogInterface, _: Int ->
                 pickPhotoLauncher.launch("image/*")
@@ -507,24 +508,39 @@ class MainActivity : AppCompatActivity() {
         val bytes = withContext(Dispatchers.IO) {
             resolver.openInputStream(uri)?.use { it.readBytes() }
         }
+        val isPendingCameraUri = uri == pendingCameraUri
 
         if (bytes == null || bytes.isEmpty()) {
+            if (isPendingCameraUri) {
+                pendingCameraFile?.delete()
+                pendingCameraUri = null
+                pendingCameraFile = null
+            }
             Toast.makeText(this, R.string.update_failure, Toast.LENGTH_SHORT).show()
             return
         }
 
-        uploadAvatarBytes(fileName, bytes, mimeType)
+        try {
+            uploadAvatarBytes(fileName, bytes, mimeType)
+        } finally {
+            if (isPendingCameraUri) {
+                pendingCameraFile?.delete()
+                pendingCameraUri = null
+                pendingCameraFile = null
+            }
+        }
     }
 
-    private suspend fun uploadAvatarFromBitmap(bitmap: Bitmap) {
-        val output = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 90, output)
-        val bytes = output.toByteArray()
-        if (bytes.isEmpty()) {
-            Toast.makeText(this, R.string.update_failure, Toast.LENGTH_SHORT).show()
-            return
-        }
-        uploadAvatarBytes("avatar-camera.jpg", bytes, "image/jpeg")
+    private fun launchFullResCameraCapture() {
+        val tempFile = File.createTempFile("moodshare-camera-", ".jpg", cacheDir)
+        val uri = FileProvider.getUriForFile(
+            this,
+            "$packageName.fileprovider",
+            tempFile
+        )
+        pendingCameraFile = tempFile
+        pendingCameraUri = uri
+        takePhotoLauncher.launch(uri)
     }
 
     private suspend fun uploadAvatarBytes(fileName: String, bytes: ByteArray, mimeType: String) {

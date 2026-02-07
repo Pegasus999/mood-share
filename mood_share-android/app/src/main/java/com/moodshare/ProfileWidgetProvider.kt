@@ -9,9 +9,9 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Build
 import android.widget.RemoteViews
+import androidx.core.content.ContextCompat
 import com.moodshare.core.MoodRepository
 import com.moodshare.core.PartnerProfile
-import com.moodshare.core.Profile
 import com.moodshare.core.SettingsStore
 import com.moodshare.R
 import com.squareup.picasso.Picasso
@@ -41,17 +41,15 @@ class ProfileWidgetProvider : AppWidgetProvider() {
     }
 
     companion object {
-        private const val DEFAULT_AVATAR =
-            "https://placehold.co/300?text=Mood+Share"
+        private const val DEFAULT_AVATAR = ""
         private const val ACTION_REFRESH = "com.moodshare.widget.REFRESH"
 
         fun updateAppWidget(context: Context, manager: AppWidgetManager, widgetId: Int) {
             val remoteViews = RemoteViews(context.packageName, R.layout.widget_profile)
-            // Load partner profile for widget instead of user profile
             val partnerState = loadPartnerState(context)
             val partnerId = partnerState.first
             val partner = partnerState.second
-            val hasPartner = !partnerId.isNullOrBlank()
+            val hasPartner = !partnerId.isNullOrBlank() && partner != null
 
             remoteViews.setViewVisibility(
                 R.id.widget_partner_container,
@@ -61,23 +59,41 @@ class ProfileWidgetProvider : AppWidgetProvider() {
                 R.id.widget_empty_state,
                 if (hasPartner) android.view.View.GONE else android.view.View.VISIBLE
             )
-            remoteViews.setTextViewText(
-                R.id.widget_name,
-                partner?.name ?: context.getString(R.string.widget_placeholder_name)
-            )
-            remoteViews.setTextViewText(
-                R.id.widget_mood,
-                partner?.mood ?: context.getString(R.string.widget_placeholder_mood)
-            )
-
-            val avatarBitmap = fetchAvatar(partner?.avatar ?: DEFAULT_AVATAR)
-            if (avatarBitmap != null) {
-                remoteViews.setImageViewBitmap(R.id.widget_avatar, avatarBitmap)
-            } else {
-                remoteViews.setImageViewResource(
-                    R.id.widget_avatar,
-                    R.drawable.ic_avatar_placeholder
+            if (hasPartner) {
+                remoteViews.setTextViewText(
+                    R.id.widget_partner_name,
+                    partner?.name ?: context.getString(R.string.widget_placeholder_name)
                 )
+                remoteViews.setTextViewText(
+                    R.id.widget_partner_bubble,
+                    partner?.mood ?: context.getString(R.string.widget_placeholder_mood)
+                )
+                updateMoodBubble(
+                    context,
+                    remoteViews,
+                    R.id.widget_partner_bubble,
+                    partner?.isFocused == true
+                )
+
+                if (partner?.avatar.isNullOrBlank()) {
+                    remoteViews.setImageViewResource(
+                        R.id.widget_partner_avatar,
+                        R.drawable.ic_avatar_placeholder
+                    )
+                } else {
+                    val partnerAvatarBitmap = fetchAvatar(partner?.avatar ?: DEFAULT_AVATAR)
+                    if (partnerAvatarBitmap != null) {
+                        remoteViews.setImageViewBitmap(
+                            R.id.widget_partner_avatar,
+                            partnerAvatarBitmap
+                        )
+                    } else {
+                        remoteViews.setImageViewResource(
+                            R.id.widget_partner_avatar,
+                            R.drawable.ic_avatar_placeholder
+                        )
+                    }
+                }
             }
 
             val intent = Intent(context, MainActivity::class.java)
@@ -113,19 +129,6 @@ class ProfileWidgetProvider : AppWidgetProvider() {
             }
         }
 
-        private fun loadProfile(context: Context): Profile? = runBlocking(Dispatchers.IO) {
-            val store = SettingsStore(context.applicationContext)
-            val name = store.profileName.firstOrNull()
-            val mood = store.profileMood.firstOrNull()
-            val avatar = store.profileAvatar.firstOrNull()
-            val isFocused = store.profileIsFocused.firstOrNull() ?: false
-            if (name.isNullOrBlank() || mood.isNullOrBlank()) {
-                null
-            } else {
-                Profile(name, avatar ?: DEFAULT_AVATAR, mood, isFocused)
-            }
-        }
-
         private fun loadPartnerState(
             context: Context
         ): Pair<String?, PartnerProfile?> = runBlocking(Dispatchers.IO) {
@@ -144,11 +147,32 @@ class ProfileWidgetProvider : AppWidgetProvider() {
         }
 
         private fun fetchAvatar(url: String): Bitmap? {
+            if (url.isBlank()) return null
             return try {
                 Picasso.get().load(url).resize(128, 128).centerCrop().get()
             } catch (_: Exception) {
                 null
             }
+        }
+
+        private fun updateMoodBubble(
+            context: Context,
+            views: RemoteViews,
+            viewId: Int,
+            isFocused: Boolean
+        ) {
+            val background = if (isFocused) {
+                R.drawable.bg_mood_bubble_active
+            } else {
+                R.drawable.bg_mood_bubble_inactive
+            }
+            val textColor = if (isFocused) {
+                ContextCompat.getColor(context, R.color.glass_bubble_active_text)
+            } else {
+                ContextCompat.getColor(context, R.color.glass_bubble_inactive_text)
+            }
+            views.setInt(viewId, "setBackgroundResource", background)
+            views.setTextColor(viewId, textColor)
         }
     }
 }

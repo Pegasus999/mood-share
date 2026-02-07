@@ -1,9 +1,20 @@
 -- Merging decision tree log ---
+provider#androidx.core.content.FileProvider
+INJECTED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManifest.xml:32:9-40:20
+	android:grantUriPermissions
+		ADDED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManifest.xml:36:13-47
+	android:authorities
+		INJECTED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManifest.xml
+		ADDED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManifest.xml:34:13-64
+	android:exported
+		ADDED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManifest.xml:35:13-37
+	android:name
+		ADDED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManifest.xml:33:13-62
 manifest
-ADDED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManifest.xml:2:1-34:12
-INJECTED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManifest.xml:2:1-34:12
-INJECTED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManifest.xml:2:1-34:12
-INJECTED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManifest.xml:2:1-34:12
+ADDED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManifest.xml:2:1-43:12
+INJECTED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManifest.xml:2:1-43:12
+INJECTED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManifest.xml:2:1-43:12
+INJECTED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManifest.xml:2:1-43:12
 MERGED from [com.google.android.material:material:1.11.0] /home/pegasus/.gradle/caches/9.0-milestone-1/transforms/9611ba5876896eeecdd1700d5d8874a5/transformed/material-1.11.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/pegasus/.gradle/caches/9.0-milestone-1/transforms/c835d56ca2c81ce42bd9967793f5d442/transformed/constraintlayout-2.1.4/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /home/pegasus/.gradle/caches/9.0-milestone-1/transforms/00eefed12b01406a64f92cda361091c8/transformed/appcompat-resources-1.6.1/AndroidManifest.xml:17:1-22:12
@@ -64,8 +75,8 @@ ADDED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManif
 	android:name
 		ADDED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManifest.xml:4:22-64
 application
-ADDED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManifest.xml:6:5-32:19
-INJECTED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManifest.xml:6:5-32:19
+ADDED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManifest.xml:6:5-41:19
+INJECTED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManifest.xml:6:5-41:19
 MERGED from [com.google.android.material:material:1.11.0] /home/pegasus/.gradle/caches/9.0-milestone-1/transforms/9611ba5876896eeecdd1700d5d8874a5/transformed/material-1.11.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.11.0] /home/pegasus/.gradle/caches/9.0-milestone-1/transforms/9611ba5876896eeecdd1700d5d8874a5/transformed/material-1.11.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/pegasus/.gradle/caches/9.0-milestone-1/transforms/c835d56ca2c81ce42bd9967793f5d442/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
@@ -136,6 +147,12 @@ ADDED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManif
 		ADDED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManifest.xml:30:17-60
 	android:name
 		ADDED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManifest.xml:29:17-58
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManifest.xml:37:13-39:54
+	android:resource
+		ADDED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManifest.xml:39:17-51
+	android:name
+		ADDED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManifest.xml:38:17-67
 uses-sdk
 INJECTED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /mnt/ssd/code/mood-share/mood_share-android/app/src/main/AndroidManifest.xml

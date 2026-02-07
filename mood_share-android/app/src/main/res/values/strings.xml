@@ -19,7 +19,6 @@
     <string name="mood_dialog_empty">Please share your mood.</string>
     <string name="update_success">Status updated.</string>
     <string name="update_failure">Oops! Unable to update status</string>
-    <string name="partner_heading">Connection</string>
     <string name="select_partner">Select</string>
     <string name="search_partner_hint">Search by name...</string>
     <string name="search_partner_title">Find someone</string>

@@ -59,7 +59,6 @@
     <string name="mood_dialog_hint">What\'s on your mind?</string>
     <string name="mood_dialog_title">Update your mood</string>
     <string name="no_results">No users found</string>
-    <string name="partner_heading">Connection</string>
     <string name="partner_image_description">Profile image</string>
     <string name="partner_photo_download_message">Save the latest photo to downloads.</string>
     <string name="partner_photo_download_title">Download photo?</string>

@@ -2,6 +2,7 @@ const fastify = require('fastify')({ logger: true });
 const Database = require('better-sqlite3');
 const fs = require('node:fs');
 const path = require('node:path');
+const { createHash } = require('node:crypto');
 const { pipeline } = require('node:stream/promises');
 
 const fastifyMultipart = require('@fastify/multipart');
@@ -67,7 +68,7 @@ const toProfile = (row, includePartner = false) => {
 };
 
 const makeAvatar = (name) =>
-  `https://placehold.co/300?text=${encodeURIComponent(name)}`;
+  `https://placehold.co/1200x1200?text=${encodeURIComponent(name)}`;
 
 const toSafeBase = (value) =>
   value.replace(/[^a-z0-9_-]+/gi, '_').replace(/^_+|_+$/g, '') || 'avatar';
@@ -78,8 +79,79 @@ const buildBaseUrl = (request) => {
   return `${proto}://${host}`;
 };
 
+const toLocalUploadFilename = (avatarUrl) => {
+  if (!avatarUrl || typeof avatarUrl !== 'string') return null;
+
+  try {
+    const parsed = new URL(avatarUrl);
+    if (!parsed.pathname.startsWith('/uploads/')) {
+      return null;
+    }
+    return path.basename(decodeURIComponent(parsed.pathname));
+  } catch {
+    if (avatarUrl.startsWith('/uploads/')) {
+      return path.basename(decodeURIComponent(avatarUrl.slice('/uploads/'.length)));
+    }
+    return null;
+  }
+};
+
+const removeFileIfExists = async (filePath) => {
+  try {
+    await fs.promises.unlink(filePath);
+  } catch (err) {
+    if (err?.code !== 'ENOENT') {
+      throw err;
+    }
+  }
+};
+
+const listReferencedAvatarFiles = () => {
+  const rows = db.prepare('SELECT avatar FROM profiles').all();
+  const files = new Set();
+  for (const row of rows) {
+    const filename = toLocalUploadFilename(row.avatar);
+    if (filename) {
+      files.add(filename);
+    }
+  }
+  return files;
+};
+
+const cleanupOrphanedUploads = async () => {
+  const referencedFiles = listReferencedAvatarFiles();
+  const entries = await fs.promises.readdir(uploadsDir, { withFileTypes: true });
+  let removed = 0;
+
+  for (const entry of entries) {
+    if (!entry.isFile()) continue;
+    if (referencedFiles.has(entry.name)) continue;
+    await removeFileIfExists(path.join(uploadsDir, entry.name));
+    removed += 1;
+  }
+
+  fastify.log.info(
+    {
+      referenced: referencedFiles.size,
+      scanned: entries.length,
+      removed,
+    },
+    'Avatar cleanup job completed'
+  );
+};
+
+const startAvatarCleanupJob = () => {
+  const intervalMs = 6 * 60 * 60 * 1000; // Every 6 hours
+  const timer = setInterval(() => {
+    cleanupOrphanedUploads().catch((err) => {
+      fastify.log.error(err, 'Avatar cleanup job failed');
+    });
+  }, intervalMs);
+  timer.unref();
+};
+
 fastify.register(fastifyMultipart, {
-  limits: { fileSize: 10 * 1024 * 1024 }
+  limits: { fileSize: 25 * 1024 * 1024 }
 });
 
 fastify.register(fastifyStatic, {
@@ -145,8 +217,16 @@ fastify.post('/upload', async (request, reply) => {
   }
 
   const safeBase = toSafeBase(name);
-  const filename = `${safeBase}-${Date.now()}${ext}`;
+  const avatarHash = createHash('sha256').update(name).digest('hex').slice(0, 16);
+  const filename = `${safeBase}-${avatarHash}${ext}`;
   const targetPath = path.join(uploadsDir, filename);
+
+  const oldFilename = toLocalUploadFilename(existing.avatar);
+  if (oldFilename && oldFilename !== filename) {
+    const oldPath = path.join(uploadsDir, oldFilename);
+    await removeFileIfExists(oldPath);
+  }
+
   await pipeline(filePart.file, fs.createWriteStream(targetPath));
 
   const baseUrl = buildBaseUrl(request);
@@ -183,7 +263,7 @@ fastify.post('/register', async (request, reply) => {
     .prepare(
       `INSERT INTO profiles (name, avatar, mood, isFocused)
        VALUES (?, ?, ?, ?)
-       ON CONFLICT(name) DO UPDATE SET avatar = excluded.avatar, mood = excluded.mood, isFocused = excluded.isFocused`
+       ON CONFLICT(name) DO NOTHING`
     )
     .run(name, avatar, DEFAULT_MOOD, 0);
 
@@ -320,6 +400,8 @@ fastify.patch('/partner', async (request, reply) => {
 // Start server
 const start = async () => {
   try {
+    await cleanupOrphanedUploads();
+    startAvatarCleanupJob();
     await fastify.listen({ port: 3000, host: '0.0.0.0' });
   } catch (err) {
     fastify.log.error(err);

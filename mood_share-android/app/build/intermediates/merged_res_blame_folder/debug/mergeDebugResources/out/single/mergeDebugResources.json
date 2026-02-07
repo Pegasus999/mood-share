@@ -36,10 +36,6 @@
         "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable-night/bg_gradient_card.xml"
     },
     {
-        "merged": "com.moodshare.app-debug-35:/layout_activity_main.xml.flat",
-        "source": "com.moodshare.app-main-37:/layout/activity_main.xml"
-    },
-    {
         "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/mipmap-mdpi_ic_launcher_foreground.webp.flat",
         "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/mipmap-mdpi/ic_launcher_foreground.webp"
     },
@@ -66,6 +62,10 @@
     {
         "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/mipmap-xhdpi_ic_launcher.webp.flat",
         "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.moodshare.app-debug-35:/xml_file_paths.xml.flat",
+        "source": "com.moodshare.app-main-37:/xml/file_paths.xml"
     },
     {
         "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_bg_mood_bubble_active.xml.flat",
@@ -188,11 +188,11 @@
         "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/bg_thought_bubble.xml"
     },
     {
-        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_bg_toggle_container.xml.flat",
-        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/bg_toggle_container.xml"
-    },
-    {
         "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/layout_widget_profile.xml.flat",
         "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/layout/widget_profile.xml"
+    },
+    {
+        "merged": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-debug-35:/drawable_bg_toggle_container.xml.flat",
+        "source": "/home/pegasus/.gradle/daemon/9.0-milestone-1/com.moodshare.app-main-37:/drawable/bg_toggle_container.xml"
     }
 ]

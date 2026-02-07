@@ -96,19 +96,16 @@ id switch_focus
 id text_mood
 id text_mood_bubble
 id text_name
-id text_partner_heading
 id text_partner_mood
 id text_partner_mood_bubble
 id text_partner_name
 id text_partner_status
 id text_status_heading
-id text_tagline
-id text_time
-id widget_avatar
 id widget_empty_state
-id widget_mood
-id widget_name
+id widget_partner_avatar
+id widget_partner_bubble
 id widget_partner_container
+id widget_partner_name
 id widget_refresh
 id widget_root
 layout activity_main
@@ -126,7 +123,6 @@ string mood_dialog_empty
 string mood_dialog_hint
 string mood_dialog_title
 string no_results
-string partner_heading
 string partner_image_description
 string partner_photo_download_message
 string partner_photo_download_title
@@ -159,4 +155,5 @@ string widget_refresh_description
 style Theme.MoodShare
 style Theme.MoodShare.Dark
 style Theme.MoodShare.Light
+xml file_paths
 xml profile_widget_info
